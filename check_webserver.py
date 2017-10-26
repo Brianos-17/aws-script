@@ -11,12 +11,12 @@ def check_webserver():
     (status, output) = subprocess.getstatusoutput(cmd)
 
     if status == 0:
-        print('Nginx is already running on this instance')
+        print('Nginx is already running on this instance\n')
         sys.exit(1)
     else:
         sys.stderr.write(output) # stderr handles almost all of the interpreters error messages
         print(status)
-        print('Nginx is not currently running on this instance.\nStarting Nginx now.')
+        print('Nginx is not currently running on this instance.\nStarting Nginx now...\n')
         cmd = 'sudo service nginx start'
         (status, output) = subprocess.getstatusoutput(cmd)
         if status == 0:
