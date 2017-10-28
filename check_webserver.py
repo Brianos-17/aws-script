@@ -5,7 +5,7 @@ import sys
 
 
 def check_webserver():
-    cmd = 'ps -A | grep nginx '
+    cmd = 'ps -A | grep nginx | grep -v grep'
     # ps shows currently running processes, -a for all users. grep searches for -v lines that do not match nginx
 
     (status, output) = subprocess.getstatusoutput(cmd)

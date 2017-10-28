@@ -7,6 +7,7 @@ import create_bucket
 import upload_file
 
 
+# Prints menu for user interaction
 def print_menu():
     print('                         \n'
           '         Welcome         \n'

@@ -9,7 +9,7 @@ def create_s3_bucket():
     s3 = boto3.client('s3')
 
     try:
-        bucket_number = randint(0, 1000)
+        bucket_number = randint(0, 1000)  # Generats a random number to be used as part of the bucket name
         bucket_name = 'my-unique-bucket-' + str(bucket_number)  # Each bucket name must be wholly unique
         s3.create_bucket(
             ACL='public-read',  # Grants read access to all users
@@ -19,10 +19,11 @@ def create_s3_bucket():
             }
         )
 
+        # The bucket policy created and attached to this bucket
         bucket_policy = {
             'Version': '2012-10-17',
             'Statement': [{
-                'Sid': 'AddPerm',
+                'Sid': 'AllowPublicRead',
                 'Effect': 'Allow',
                 'Principal': '*',
                 'Action': ['s3:GetObject'],
