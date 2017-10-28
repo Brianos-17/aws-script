@@ -41,6 +41,11 @@ def upload_file_bucket():
         s3.Object(chosen_bucket.name, object_name).put(Body=open(object_name, 'rb'))
         print('The Hello-World.jpg image has been uploaded to ', chosen_bucket)
 
+        # Grant the object read permissions
+        hello_world = s3.Bucket(chosen_bucket.name).Object(object_name)
+        hello_world.Acl().put(ACL='public-read')
+        print('Giving the Hello-World.jpg read permissions')
+
         print('\nWould you like to add this file to one of your ec2 instances? [Y/N]')
         answer = input('->')
 
@@ -67,7 +72,7 @@ def upload_file_instance(chosen_bucket):
         # Prints all instances and places them in an array for easy user selection
         index_number = 1
         instance_list = []
-        print('Here are all your currently running instances;')
+        print('\nHere are all your currently running instances;')
         for instance in ec2.instances.all():
             if instance.state['Name'] == 'running':
                 print(index_number, ')', instance)
