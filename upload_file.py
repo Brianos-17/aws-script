@@ -84,8 +84,8 @@ def upload_file_instance(chosen_bucket):
         chosen_instance = instance_list[int(index) - 1]
 
         # Command to overwrite the current nginx home page of the chosen instance
-        cmd = " 'echo \"<html><p>To view the uploaded s3 image click " \
-              "<a href=" + url + "/>HERE</p></html>\" " \
+        cmd = " 'echo \"<html><p>Here is the uploaded s3 image</p>" \
+              "<img src=" + url + " alt=\'Hello-World\'/></html>\" " \
               "| sudo tee /usr/share/nginx/html/index.html'"
         print('Running command: ' + cmd)
         # SSH into the chosen instance and execute the command to view the bucket image

@@ -25,10 +25,10 @@ def create_ec2_instance():
                     chkconfig nginx on''',
             InstanceType='t2.micro')
 
-        print('An instance has been created with an ID of: ' + instance[0].id)
+        print('\nAn instance has been created with an ID of: ' + instance[0].id)
         time.sleep(5)
         instance[0].reload()
-        print('The new instance has a public IP address of: '+  instance[0].public_ip_address)
+        print('The new instance has a public IP address of: ' + instance[0].public_ip_address)
 
         instance[0].create_tags(
             Resources=[instance[0].id],
