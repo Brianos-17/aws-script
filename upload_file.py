@@ -86,7 +86,7 @@ def upload_file_instance(chosen_bucket):
         # Command to overwrite the current nginx home page of the chosen instance
         cmd = " 'echo \"<html><p>Here is the uploaded s3 image</p>" \
               "<img src=" + url + " alt=\'Hello-World\'/></html>\" " \
-              "| sudo tee /usr/share/nginx/html/index.html'"
+              "| sudo tee -a /usr/share/nginx/html/index.html'"
         print('Running command: ' + cmd)
         # SSH into the chosen instance and execute the command to view the bucket image
         (status, output) = subprocess.getstatusoutput('ssh -o StrictHostKeyChecking=no -i BriansKey.pem ec2-user@'
